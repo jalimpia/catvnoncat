@@ -1,0 +1,24 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<form action="/submit" method="POST" enctype="multipart/form-data">
+	
+	<img style="width:250px;height:200px;" src="static/img/icon.png" id="output"><br>
+	<input type="file" name="photo" id="img"><br>
+	<input type="submit" value="Submit">
+</form>
+
+{% if predict == '1.0' %}
+<h1>It's a cat</h1>
+{% elif predict == '0.0' %}
+<h1>It's not a cat</h1>
+{%else%}
+{% endif %}
+
+<img src="{{path}}" style="width:250px;height:200px;">
+
+<script>
+$( "#img" ).change(function() {
+  	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+});	
+</script>
+
